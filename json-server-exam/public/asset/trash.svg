@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="15px" viewBox="0 0 13 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>trash-2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="add-after" transform="translate(-762.000000, -301.000000)" stroke="#FFFFFF">
+            <g id="Group-7" transform="translate(448.000000, 295.000000)">
+                <g id="trash-2" transform="translate(314.000000, 7.000000)">
+                    <polyline id="Shape" points="0 3 1.44444444 3 13 3"></polyline>
+                    <path d="M11,3.46666667 L11,11.8083333 C11,12.4664727 10.3604068,13 9.57142857,13 L2.42857143,13 C1.63959321,13 1,12.4664727 1,11.8083333 L1,3.46666667 M3.14285714,2.38333333 L3.14285714,1.19166667 C3.14285714,0.53352734 3.78245036,0 4.57142857,0 L7.42857143,0 C8.21754964,0 8.85714286,0.53352734 8.85714286,1.19166667 L8.85714286,2.38333333" id="Shape"></path>
+                    <path d="M5,7 L5,10" id="Shape"></path>
+                    <path d="M8,7 L8,10" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
