@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,57 +9,54 @@
   <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS-master/semantic.css">
   <title>N빵</title>
 </head>
+
 <body>
   <div class="wrapper">
     <!-- 로고 및 제목부분 -->
-    <div class ="title">
+    <div class="title">
       <img src="asset/logo.png" alt="" id="head">
     </div>
 
     <!-- 등록 버튼 -->
-    <a href="" ><div type="" class ="activeBtn" id="addBtn">
+    <div type="" class="activeBtn" id="addBtn">
       N빵 등록하기
-    </div></a>
+    </div>
 
-    <!-- 등록 활성화시 나오는d form 더미 -->
-    <div class="addBox">
+    <!-- 등록 활성화시 나오는 form 더미 -->
+    <div class="addBox" style="display:none">
       <form>
         <label for="" class="label">총 금액</label>
-        <input type="text" name="" placeholder="₩" class="form">
+        <input id="total" type="text" name="" placeholder="₩" class="form">
       </form>
-      <form class = "col-8 left">
+      <form class="col-8 left">
         <label for="" class="label">계산한 사람</label>
-        <input type="text" name="" value="" class="form">
+        <input id="calpeople" type="text" name="" value="" class="form">
       </form>
-      <form class = "col-8">
+      <form class="col-8">
         <label for="" class="label">총 인원 수</label>
-        <input type="text" name="" value="" class="form">
+        <input id="count" type="text" name="" value="" class="form">
       </form>
       <form>
         <label for="" class="label">함께 한 사람</label>
-        <input type="text" name="" placeholder="이름을 입력하세요" class="form">
-        <input type="text" name="" placeholder="이름을 입력하세요" class="form">
-        <input type="text" name="" placeholder="이름을 입력하세요" class="form">
+        <input id = "people1" type="text" name="" placeholder="이름을 입력하세요" class="form">
+        <input id = "people2" type="text" name="" placeholder="이름을 입력하세요" class="form">
+        <input id = "people3" type="text" name="" placeholder="이름을 입력하세요" class="form">
       </form>
       <form>
         <label for="" class="label">계산한 날짜</label>
-        <input type="text" name="" placeholder="날짜를 입력하세요" class="form">
+        <input id = "day" type="text" name="" placeholder="날짜를 입력하세요" class="form">
       </form>
       <form>
-        <a href="">
-          <div class="addCancel cancelBtn"> 취소</div>
-        </a>
-        <a href="">
-          <div id="submitBtn" class="activeBtn"> 등록</div>
-        </a>
+        <div class="addCancel cancelBtn"> 취소</div>
+        <div id="submitBtn" class="activeBtn" style="cursor:pointer"> 등록</div>
       </form>
-    </div> 
+    </div>
 
     <!-- carList 보일 곳 -->
     <div class="insertList">
     </div>
   </div>
-  
+
   <!-- footer 이미지 -->
   <div class="footer">
     <p>김세준 / 김나영</p>
@@ -67,11 +65,11 @@
   <!-- <div id="footer">
   </div> -->
 
-  
-  <script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
-  <script src="semantic/dist/semantic.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+  <script src="n.js">
+  </script>
 </body>
+
 </html>

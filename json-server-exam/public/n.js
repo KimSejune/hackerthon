@@ -4,8 +4,16 @@
   var insertList = document.querySelector('.insertList');
   var addBtn = document.getElementById('addBtn');
   var addBox = document.querySelector('.addBox');
-  var cancelBtn = document.querySelector('.cancelBtn');
-  
+  var addCancel = document.querySelector('.addCancel');
+  var submitBtn = document.getElementById('submitBtn');
+  var inputtotal = document.getElementById('total');
+  var inputcalpeople = document.getElementById('calpeople');
+  var inputcount = document.getElementById('count');
+  var inputpeople1 = document.getElementById('people1');
+  var inputpeople2 = document.getElementById('people2');
+  var inputpeople3 = document.getElementById('people3');
+  var inputday = document.getElementById('day');
+
 
   function getListItem(e) {
     var xhr = new XMLHttpRequest();
@@ -18,7 +26,7 @@
           console.log('status OK!');
           nlistitem = JSON.parse(xhr.responseText);
           nlistitem.forEach(el => {
-            insertListItem(insertList, el.id, el.total, el.calpeople, el.count, el.people1, el.people2, el.people3, el.day);
+            insertListItem(el);
           });
         } else {
           console.log("status Error : " + this.status);
@@ -28,74 +36,101 @@
   }
 
 
-  function insertListItem(e, id, total, calpeople, count, people1, people2, people3, day) {
-    insertListTable(id, total, calpeople, count, people1, people2, people3, day);
+  function insertListItem(el) {
+    insertListTable(el);
   }
 
-  function insertListTable(id, total, calpeople, count, people1, people2, people3, day) {
+  function insertListTable({
+    id,
+    total,
+    calpeople,
+    count,
+    people,
+    day
+  }) {
+    if (people.length + 1 !== count * 1) {
+      return alert('인원수가 다릅니다.');
+    }
     var putMoney = total / count;
-    let str = `<div class="insertCard">
-    <div class="cardHeader">
-      ${day}
-      <button class="deleteBtn" data-id=${id}>지우기</button>
-    </div>  
+
+    let str = `
+    <div class="insertCard" id="${id}">
+      <div class="cardHeader">
+        ${day}
+        <button class="deleteBtn" data-id="${id}">지우기</button>
+      </div>  
     <div class="cardBody">
-      <div class="cardBodyLeft">
-        <div class="calpeolpe">
-          계산한 사람 ${calpeople}
+      <div class="col-8 cardBodyLeft">
+        <div>
+          <p class="label">계산한 사람</p>
+          <p class="calpeople">
+            ${calpeople}
+          </p>
         </div>
-        <div class="totalMoney">계산한 돈 ${total}</div>
-        <div class="getMoney">받은 돈</div>
-        <div class="leftMoney">받을 돈</div>
-      <div class="cardBodyRight">
-        <div class="anotherPeople">함께한 사람 ${count}</div>`
-    for (var i = 0; i < count * 1; i++) {
-      str += `<div class="getPeople${i}"><input type="checkbox">${people1} ${putMoney}</div>`
+        <div class="moneyCal">
+          <div class="totalMoney"> <label>계산한 돈</label> <p class="rightTotalMoney">${total}</p></div>
+          <div class="getMoney"> <label>받은 돈</label> <p class="rightMoney">-</p><p class="rightGetMoney"> 0000 </p></div>
+          <div class="leftMoney"> <label>남은 돈</label><img src="/asset/coin_one.svg"><p class="rightLeftMoney"> 0000 </p></div>
+        </div>
+      <div class="col-8 cardBodyRight">
+        <div>
+          <p class="label">함께한 사람</p>
+          <p class="anotherPeople">${count}명</p>
+        </div>
+        <div class="getPeople">`
+    for (var i = 1; i < count * 1; i++) {
+      str += `<div class="ui checkbox getPeople${i}"><input type="checkbox" class="getPeople${i}"><label>${people[i-1]}</label> <p>${putMoney}</p></div>`
     }
     str += `</div>
-        </div>
-      </div>`
-
+      </div>  
+    </div>
+  </div>`
     insertList.insertAdjacentHTML('beforeend', str);
     var deleteBtn = document.querySelectorAll('.deleteBtn');
     deleteBtn[deleteBtn.length - 1].addEventListener('click', deleteBtnAction);
-    
+
   }
 
   function addBtnAction(e) {
-    if (addBox.style.display === "none") {
-      addBox.style.display === "block";
-    } else {
-      if (!(total.value.trim())) {
-        alert('총금액을 입력해주세요.');
-      } else if (!(calpeople.value.trim())) {
-        alert('계산한 돈을 입력해주세요.')
-      } else {
-        insertPostItem(total.value, calpeople.value, count.value, people1.value, people2.value, people3.value, day.value);
-        total.focus();
-        total.value = "";
-        calpeople.value = "";
-        count.value = "";
-        people1.value = "";
-        people2.value = "";
-        people3.value = "";
-        day.value = "";
-      }
+    if (addBox.style.display === 'none') {
+      console.log('style');
+      addBox.style.display = "block";
+      submitBtn.addEventListener('click', submitBtnAction);
     }
   }
 
-  function insertPostItem(total, calpeople, count, people1, people2, people3, day) {
+  function submitBtnAction(e) {
+
+    console.log('hi');
+    if (!inputtotal.value.trim() && !inputcalpeople.value.trim() && !inputcount.value.trim()) {
+      return alert('총금액, 계산한 사람명, 인원은 필수 입력입니다.');
+    } else {
+
+      insertPostItem(inputtotal.value, inputcalpeople.value, inputcount.value, [inputpeople1.value, inputpeople2.value, inputpeople3.value], inputday.value);
+      inputtotal.focus();
+      inputtotal.value = '';
+      inputcalpeople.value = "";
+      inputcount.value = "";
+      inputpeople1.value = "";
+      inputpeople2.value = "";
+      inputpeople3.value = "";
+      inputday.value = "";
+    }
+
+  }
+
+  function insertPostItem(total, calpeople, count, people, day) {
     var xhr = new XMLHttpRequest();
     xhr.open('post', '/NListItem', true);
+    xhr.setRequestHeader('Content-type', 'application/json');
     var data = {
       total,
       calpeople,
       count,
-      people1,
-      people2,
-      people3,
+      people,
       day
     };
+    console.log(data);
     xhr.send(JSON.stringify(data));
 
     xhr.onreadystatechange = function (e) {
@@ -104,7 +139,7 @@
           console.log('Post status OK!');
           var addItem = JSON.parse(xhr.responseText);
 
-          insertListItem(insertList, addItem.total, addItem.calpeople, addItem.count, addItem.people1, addItem.people2, addItem.people3, addItem.day);
+          insertListItem(addItem);
 
         } else {
           console.log('Post status Error!!');
@@ -115,29 +150,31 @@
 
   // add 창에서의 취소버튼
   function cancelBtnAction(e) {
-    addBox.style.display === "none";
+    console.log('cancle OK');
+    addBox.style.display = 'none';
+
   }
 
   function deleteBtnAction(e) {
-  
+
     insertList.removeChild(e.target.parentNode.parentNode);
     console.log(e.target.dataset.id);
     deleteDBlist(e.target.dataset.id);
   }
 
-  function deleteDBlist(id){
+  function deleteDBlist(id) {
     var xhr = new XMLHttpRequest();
-    xhr.open('delete', '/NListItem/'+id, true);
+    xhr.open('delete', '/NListItem/' + id, true);
     xhr.send(null);
 
-    xhr.onreadystatechange = function(){
-      if(xhr.readyState === XMLHttpRequest.DONE){
-        if(xhr.status === 200){
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
           console.log('Delete Status OK!');
-          
-          nlistitem.splice(id-1,1);
+
+          nlistitem.splice(id - 1, 1);
           console.log(nlistitem);
-        }else {
+        } else {
           console.log('Delete Status Error');
         }
       }
@@ -148,6 +185,6 @@
 
   getListItem();
   addBtn.addEventListener('click', addBtnAction);
-  cancelBtn.addEventListener('click', cancelBtnAction);
+  addCancel.addEventListener('click', cancelBtnAction);
 
 })(window, document);
