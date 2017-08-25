@@ -1,74 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" type="text/css" href="/Semantic-UI-CSS-master/semantic.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="icon" type="image/png" sizes="96x96" href="asset/favicon-96x96.png">
   <title>N빵</title>
 </head>
+
 <body>
   <div class="wrapper">
     <!-- 로고 및 제목부분 -->
-    <div class ="title">
+    <div class="title">
       <img src="asset/logo.png" alt="" id="head">
     </div>
 
     <!-- 등록 버튼 -->
-    <div type="" class ="activeBtn" id="addBtn">
+    <div type="" class="activeBtn" id="addBtn">
       N빵 등록하기
     </div>
 
     <!-- 등록 활성화시 나오는d form 더미 -->
-    
-    <div class="addBox" style ="display:none;">
+
+    <div class="addBox" style="display:none;">
       <form>
         <label for="" class="label">총 금액</label>
-        <input id = "total" type="text" name="" placeholder="₩" class="form">
+        <input id="total" type="text" name="" placeholder="₩" class="form">
       </form>
-      <form class = "col-8 left">
+      <form class="col-8 left">
         <label for="" class="label">계산한 사람</label>
-        <input id = "calpeople" type="text" name="" value="" class="form">
+        <input id="calpeople" type="text" name="" value="" class="form">
       </form>
-      <form class = "col-8">
+      <form class="col-8">
         <label for="" class="label">총 인원 수</label>
-        <input id = "count" type="text" name="" value="" class="form">
+        <input id="count" type="text" name="" value="" class="form">
       </form>
-      <form>
-        <label for="" class="label">함께 한 사람</label>
-        <input id = "people1" type="text" name="" placeholder="이름을 입력하세요" class="form">
-        <input id = "people2" type="text" name="" placeholder="이름을 입력하세요" class="form">
-        <input id = "people3" type="text" name="" placeholder="이름을 입력하세요" class="form">
+      <form id="addpepleform">
+        <label for="" class="label" style="display:inline-block">함께 한 사람</label>
+        <img src="asset/plusPeople.svg" id="plusPeople">
+        <input class="people1 form" type="text" name="" placeholder="이름을 입력하세요">
+        <input class="people1 form" type="text" name="" placeholder="이름을 입력하세요">
+        <input class="people1 form" type="text" name="" placeholder="이름을 입력하세요">
       </form>
       <form>
         <label for="" class="label">계산한 날짜</label>
-        <input id = "day" type="text" name="" placeholder="날짜를 입력하세요" class="form">
+        <input id="day" type="text" name="" placeholder="날짜를 입력하세요" class="form">
       </form>
       <form>
-        <a href="">
-          <div class="addCancel cancelBtn"> 취소</div>
-        </a>
-        <a href="">
-          <div id="submitBtn" class="activeBtn"> 등록</div>
-        </a>
+
+        <div class="addCancel cancelBtn"> 취소</div>
+        <div id="submitBtn" class="activeBtn"> 등록</div>
+
       </form>
-    </div> 
+    </div>
 
     <!-- carList 보일 곳 -->
     <div class="insertList">
     </div>
   </div>
-  
+
   <!-- footer 이미지 -->
   <div class="footer">
-    <p><a href="https://github.com/KimSejune/hackerthon"><img src="asset/github-logo-5F384D0265-seeklogo.com.png" id="gitimg"></a> 김세준 <a href="https://github.com/feel5ny"><img src="asset/github-logo-5F384D0265-seeklogo.com.png" id="gitimg"></a> 김나영 </p>
+    <p><a href="https://github.com/KimSejune/hackerthon"><img src="asset/github-logo-5F384D0265-seeklogo.com.png" id="gitimg"></a>      김세준 <a href="https://github.com/feel5ny"><img src="asset/github-logo-5F384D0265-seeklogo.com.png" id="gitimg"></a>      김나영 </p>
     <img src="asset/coin_stack.png" alt="" id="footerImg">
   </div>
   <!-- <div id="footer">
   </div> -->
-
+  <script>
+    $(function () {
+      $('#head').fadeIn(1000);
+    });
+    $('#addBtn').click(function(){
+      $('#addBox').slideDown('slow');
+    });
+  </script>
 
   <script src="n.js"></script>
 </body>
+
 </html>

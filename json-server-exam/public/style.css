@@ -27,10 +27,14 @@ a {
 
 .title{
   display: flex;
+  height: 250px;
   justify-content: center;
   align-items: center;
 }
 
+.title > img {
+  display: none;
+}
 #head {
   width: 300px;
 }
@@ -282,7 +286,14 @@ p.label{
 
 .getPeople1,
 .getPeople2,
-.getPeople3{
+.getPeople3,
+.getPeople4,
+.getPeople5,
+.getPeople6,
+.getPeople7,
+.getPeople8,
+.getPeople9,
+.getPeople10,{
   /* display: block; */
   padding-top: 15px;
   /* font-size: 14px; */
@@ -290,7 +301,14 @@ p.label{
 
 .getPeople1 > label > p,
 .getPeople2 > label > p,
-.getPeople3 > label > p{
+.getPeople3 > label > p,
+.getPeople4 > label > p,
+.getPeople5 > label > p,
+.getPeople6 > label > p,
+.getPeople7 > label > p,
+.getPeople8 > label > p,
+.getPeople9 > label > p,
+.getPeople10 > label > p{
   display: inline-block;
   float: right;
   position: relative;
@@ -302,6 +320,11 @@ p.label{
 
 #gitimg {
   width: 20px;
+}
+
+#plusPeople{
+  float: right;
+  cursor: pointer;
 }
 
 /****************************
