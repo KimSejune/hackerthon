@@ -628,7 +628,6 @@ h5:last-child {
 *******************************/
 
 p {
-  margin: 0em 0em 1em;
   line-height: 1.4285em;
 }
 
@@ -28330,7 +28329,6 @@ a.ui.card:hover,
 
 .ui.checkbox {
   position: relative;
-  display: inline-block;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   outline: none;

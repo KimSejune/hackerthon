@@ -48,22 +48,23 @@
     people,
     day
   }) {
-    if (people.length + 1 !== count * 1) {
-      return alert('인원수가 다릅니다.');
-    }
+    // if (people.length + 1 !== count * 1) {
+    //   return alert('인원수가 다릅니다.');
+    // }
     var putMoney = total / count;
 
     let str = `
     <div class="insertCard" id="${id}">
       <div class="cardHeader">
-        ${day}
-        <button class="deleteBtn" data-id="${id}">지우기</button>
+        <p>${day}</p>
+        <img src="/asset/trash.svg" class="deleteBtn" data-id="${id}">
+        <img src="/asset/edit.svg">
       </div>  
     <div class="cardBody">
       <div class="col-8 cardBodyLeft">
         <div>
           <p class="label">계산한 사람</p>
-          <p class="calpeople">
+          <p class="calPeople">
             ${calpeople}
           </p>
         </div>
@@ -72,7 +73,8 @@
           <div class="getMoney"> <label>받은 돈</label> <p class="rightMoney">-</p><p class="rightGetMoney"> 0000 </p></div>
           <div class="leftMoney"> <label>남은 돈</label><img src="/asset/coin_one.svg"><p class="rightLeftMoney"> 0000 </p></div>
         </div>
-      <div class="col-8 cardBodyRight">
+      </div>
+    <div class="col-8 cardBodyRight">
         <div>
           <p class="label">함께한 사람</p>
           <p class="anotherPeople">${count}명</p>
