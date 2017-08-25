@@ -52,6 +52,7 @@
     //   return alert('인원수가 다릅니다.');
     // }
     var putMoney = total / count;
+    var myMoney = total - putMoney;
 
     let str = `
     <div class="insertCard" id="${id}">
@@ -69,7 +70,7 @@
           </p>
         </div>
         <div class="moneyCal">
-          <div class="totalMoney"> <label>계산한 돈</label> <p class="rightTotalMoney">${total}</p></div>
+          <div class="totalMoney"> <label>계산한 돈</label> <p class="rightTotalMoney">${myMoney}</p></div>
           <div class="getMoney"> <label>받은 돈</label> <p class="rightMoney">-</p><p class="rightGetMoney"> 0000 </p></div>
           <div class="leftMoney"> <label>남은 돈</label><img src="/asset/coin_one.svg"><p class="rightLeftMoney"> 0000 </p></div>
         </div>
@@ -89,10 +90,49 @@
   </div>`
     insertList.insertAdjacentHTML('beforeend', str);
     var deleteBtn = document.querySelectorAll('.deleteBtn');
+    checkArrayAction();
     deleteBtn[deleteBtn.length - 1].addEventListener('click', deleteBtnAction);
 
   }
 
+  function checkArrayAction() {
+    var checkArray = document.querySelectorAll('.cardBodyRight > .getPeople > div > input[type=checkbox]');
+    [...checkArray].map(el => {
+      console.log(el);
+      el.onchange = function(){
+        let insertCard = findParent(this);
+        console.log(insertCard);
+        let rightTotalMoney = insertCard.querySelector('.rightTotalMoney');
+        let rightGetMoney = insertCard.querySelector('.rightGetMoney');
+        let rightLeftMoney = insertCard.querySelector('.rightLeftMoney');
+        
+        let total = +rightGetMoney.textContent;
+        let money = +el.nextElementSibling.nextElementSibling.textContent;
+        let byName = el.parentNode;
+        if(el.checked === true){   
+          total += money;
+          byName.style.textDecoration = 'line-through';
+        } else {
+          total -= money;
+          byName.style.textDecoration = 'none';
+        }
+        rightGetMoney.textContent = total;
+        rightLeftMoney.textContent = (rightTotalMoney.textContent*1 - rightGetMoney.textContent*1);
+        console.log(rightLeftMoney.textContent);
+
+        
+        
+
+        // document.querySelector('') = ;
+      };
+    });
+  }
+  function findParent(el){
+    while(!el.parentNode.id){
+      el = el.parentNode;
+    }
+    return el;
+  }
   function addBtnAction(e) {
     if (addBox.style.display === 'none') {
       console.log('style');
