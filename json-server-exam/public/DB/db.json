@@ -1,25 +1,23 @@
 {
-  "bookList": [
+  "NListItem": [
     {
-      "title": "123",
-      "author": "123",
-      "price": "",
+      "total": "40000",
+      "calpeople": "김세준",
+      "count": "4",
+      "people1": "김1준",
+      "people2": "김1준",
+      "people3": "김1준",
+      "day": "20170825",
       "id": 1
     },
     {
-      "title": "21312312312",
-      "author": "123",
-      "price": "",
-      "id": 5
-    }
-  ],
-  "storeList": [
-    {
-      "name": "21312312312",
-      "location": "123",
-      "star": "",
-      "etc": "",
-      "id": 1
+      "total": "40000",
+      "calpeople": "김세준",
+      "count": "3",
+      "people1": "김1준",
+      "people2": "김1준",
+      "day": "20170825",
+      "id": 2
     }
   ]
 }
