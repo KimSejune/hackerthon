@@ -1,0 +1,161 @@
+*{
+  margin : 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  
+}
+
+.wrapper {
+  width : 400px;
+  margin: 0 auto;  
+  /* position: relative; */
+  /* background-color: red; */
+}
+
+a {
+  text-decoration: none;
+  color: #fdca6b;
+}
+
+.title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#head {
+  width: 300px;
+}
+
+#addBtn {
+  width: 100%;
+  color : #fdca6b;
+}
+
+#addBtn:focus {
+  width: 100%;
+  color : #fdca6b;
+  outline: none;
+  border: 4px solid #fdca6b;
+}
+
+.footer {
+  display: block;
+  position: relative;
+  bottom : 0px;
+  padding-top:30px;
+  width: 100%;
+  background-color: white;
+  text-align: center;
+  left : 50%;
+  transform: translateX(-50%);
+}
+
+#footerImg {
+  bottom : 0px;
+  position: relative;
+}
+
+.insertList{
+  position: relative;
+  margin-top : 10px;
+  /* background-color: blue; */
+}
+
+.label{
+  font-size: 13px;
+  color : #2f3c72;
+  font-weight: 600;
+  display: block;
+}
+
+form {
+  margin-top : 10px;
+}
+
+.form{
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border : 2px solid rgba(101,109,142,0.64);
+}
+
+.form:focus{
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border : 2px solid #fdca6b;
+  outline : none;
+}
+
+.col-8{
+  width: 49%;
+  display: inline-block;
+  /* margin-right: 5px; */
+}
+.col-8.left{
+  width: 49%;
+  display: inline-block;
+  margin-right: 3px;
+}
+
+.col-5{
+  width: 31%;
+  display: inline-block;  
+}
+.col-6{
+  width: 35%;
+  display: inline-block;  
+}
+
+input{
+  margin-top : 6px;
+}
+
+.addCancel,
+#submitBtn{
+  width : 49%;
+  display: inline-block;
+}
+.addCancel{
+  margin-right:5px;
+  
+}
+.activeBtn{
+  background-color: #2f3c72;
+  border : none;
+  border-radius: 4px;
+  padding: 10px;
+  text-align: center;
+  margin-top : 20px;
+}
+
+.cancelBtn{
+  background-color: #d8d8d8;
+  color : #474f58;
+  border : none;
+  border-radius: 4px;
+  padding: 10px;
+  text-align: center;
+  margin-top : 20px;
+}
+
+
+/****************************
+ insertList 시작 
+****************************/
+.insertList{
+  background-image : url("asset/bg_pattern.svg");
+  background-position-y: 50%;
+  background-repeat: no-repeat;
+}
+.insertCard{
+  border : 2px solid #2F3C72;
+  border-radius: 4px;
+}
+
+
+/****************************
+ insertList 종료 
+****************************/
+

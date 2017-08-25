@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="Semantic-UI-CSS-master/semantic.css">
+  <title>N빵</title>
+</head>
+<body>
+  <div class="wrapper">
+    <!-- 로고 및 제목부분 -->
+    <div class ="title">
+      <img src="asset/logo.png" alt="" id="head">
+    </div>
+
+    <!-- 등록 버튼 -->
+    <a href="" ><div type="" class ="activeBtn" id="addBtn">
+      N빵 등록하기
+    </div></a>
+
+    <!-- 등록 활성화시 나오는 form 더미 -->
+    <div class="addBox">
+      <form>
+        <label for="" class="label">총 금액</label>
+        <input type="text" name="" placeholder="₩" class="form">
+      </form>
+      <form class = "col-8 left">
+        <label for="" class="label">계산한 사람</label>
+        <input type="text" name="" value="" class="form">
+      </form>
+      <form class = "col-8">
+        <label for="" class="label">총 인원 수</label>
+        <input type="text" name="" value="" class="form">
+      </form>
+      <form>
+        <label for="" class="label">함께 한 사람</label>
+        <input type="text" name="" placeholder="이름을 입력하세요" class="form">
+        <input type="text" name="" placeholder="이름을 입력하세요" class="form">
+        <input type="text" name="" placeholder="이름을 입력하세요" class="form">
+      </form>
+      <form>
+        <label for="" class="label">계산한 날짜</label>
+        <input type="text" name="" placeholder="날짜를 입력하세요" class="form">
+      </form>
+      <form>
+        <a href="">
+          <div class="addCancel cancelBtn"> 취소</div>
+        </a>
+        <a href="">
+          <div id="submitBtn" class="activeBtn"> 등록</div>
+        </a>
+      </form>
+    </div> 
+
+    <!-- carList 보일 곳 -->
+    <div class="insertList">
+    </div>
+  </div>
+  
+  <!-- footer 이미지 -->
+  <div class="footer">
+    <p>김세준 / 김나영</p>
+    <img src="asset/coin_stack.png" alt="" id="footerImg">
+  </div>
+  <!-- <div id="footer">
+  </div> -->
+
+  
+  <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+  <script src="semantic/dist/semantic.min.js"></script>
+</body>
+</html>
