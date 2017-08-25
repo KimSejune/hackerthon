@@ -9,9 +9,13 @@
   var inputtotal = document.getElementById('total');
   var inputcalpeople = document.getElementById('calpeople');
   var inputcount = document.getElementById('count');
-  var inputpeople1 = document.getElementById('people1');
-  var inputpeople2 = document.getElementById('people2');
-  var inputpeople3 = document.getElementById('people3');
+  var inputpeople = document.querySelectorAll('.people1');
+  var plusPeople = document.getElementById('plusPeople');
+  var addpepleform = document.getElementById('addpepleform');
+  inputpeople = Array.from(inputpeople);
+  // var inputpeople1 = document.getElementById('people1');
+  // var inputpeople2 = document.getElementById('people2');
+  // var inputpeople3 = document.getElementById('people3');
   var inputday = document.getElementById('day');
 
 
@@ -50,9 +54,11 @@
   }) {
     // if (people.length + 1 !== count * 1) {
     //   return alert('인원수가 다릅니다.');
-    // }
+    // }else{}
     var putMoney = total / count;
     var myMoney = total - putMoney;
+
+    console.log(people);
 
     let str = `
     <div class="insertCard" id="${id}">
@@ -99,17 +105,17 @@
     var checkArray = document.querySelectorAll('.cardBodyRight > .getPeople > div > input[type=checkbox]');
     [...checkArray].map(el => {
       console.log(el);
-      el.onchange = function(){
+      el.onchange = function () {
         let insertCard = findParent(this);
         console.log(insertCard);
         let rightTotalMoney = insertCard.querySelector('.rightTotalMoney');
         let rightGetMoney = insertCard.querySelector('.rightGetMoney');
         let rightLeftMoney = insertCard.querySelector('.rightLeftMoney');
-        
+
         let total = +rightGetMoney.textContent;
         let money = +el.nextElementSibling.nextElementSibling.textContent;
         let byName = el.parentNode;
-        if(el.checked === true){   
+        if (el.checked === true) {
           total += money;
           byName.style.textDecoration = 'line-through';
         } else {
@@ -117,22 +123,24 @@
           byName.style.textDecoration = 'none';
         }
         rightGetMoney.textContent = total;
-        rightLeftMoney.textContent = (rightTotalMoney.textContent*1 - rightGetMoney.textContent*1);
+        rightLeftMoney.textContent = (rightTotalMoney.textContent * 1 - rightGetMoney.textContent * 1);
         console.log(rightLeftMoney.textContent);
 
-        
-        
+
+
 
         // document.querySelector('') = ;
       };
     });
   }
-  function findParent(el){
-    while(!el.parentNode.id){
+
+  function findParent(el) {
+    while (!el.parentNode.id) {
       el = el.parentNode;
     }
     return el;
   }
+
   function addBtnAction(e) {
     if (addBox.style.display === 'none') {
       console.log('style');
@@ -148,14 +156,15 @@
       return alert('총금액, 계산한 사람명, 인원은 필수 입력입니다.');
     } else {
 
-      insertPostItem(inputtotal.value, inputcalpeople.value, inputcount.value, [inputpeople1.value, inputpeople2.value, inputpeople3.value], inputday.value);
+      insertPostItem(inputtotal.value, inputcalpeople.value, inputcount.value, inputpeople, inputday.value);
+      console.log('inputpeople value' + inputpeople);
       inputtotal.focus();
       inputtotal.value = '';
       inputcalpeople.value = "";
       inputcount.value = "";
-      inputpeople1.value = "";
-      inputpeople2.value = "";
-      inputpeople3.value = "";
+      for (var i = 0; i < inputpeople.length - 1; i++) {
+        inputpeople[i].value = "";
+      }
       inputday.value = "";
     }
 
@@ -165,6 +174,7 @@
     var xhr = new XMLHttpRequest();
     xhr.open('post', '/NListItem', true);
     xhr.setRequestHeader('Content-type', 'application/json');
+    var people = people.map(el => el.value);
     var data = {
       total,
       calpeople,
@@ -224,9 +234,13 @@
 
   }
 
+  function addPeopleInputBox(e) {
+    addpepleform.insertAdjacentHTML('beforeend', `<input class="people1 form" type="text" name="" placeholder="이름을 입력하세요">`);
+  }
+
 
   getListItem();
   addBtn.addEventListener('click', addBtnAction);
   addCancel.addEventListener('click', cancelBtnAction);
-
+  plusPeople.addEventListener('click', addPeopleInputBox);
 })(window, document);
