@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Store Todo List</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th><input type="checkbox" id="allcheck"></th>
+            <th>#</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Star</th>
+            <th>Etc</th>
+          </tr>
+        </thead>
+        <tbody id='tbody'>
+
+        </tbody>
+      </table>
+
+    </div>
+
+    <div class="input-group-md">
+      <button id="deletebtn" type="button" class="btn btn-lg btn-danger">Delate Button</button>
+      <button id="insert" type="button" class="btn btn-lg btn-info">Insert Button</button>
+      <button id="cancel" type="button" class="btn btn-lg btn-warning" style="visibility: hidden">Cancel Button</button>
+    </div>
+
+    <br>
+    <div id="inputform" class="row" style="display:none">
+      <div class="input-group-md">
+        <input id="name" type="text" class="form-control" placeholder="*Name">
+      </div>
+      <br>
+      <div class="input-group-md">
+        <input id="location" type="text" class="form-control" placeholder="Location">
+      </div>
+      <br>
+      <div class="input-group-md">
+        <input id="star" type="text" class="form-control" placeholder="Star">
+      </div>
+      <br>
+      <div class="input-group-md">
+        <input id="etc" type="text" class="form-control" placeholder="Etc">
+      </div>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+
+</html>

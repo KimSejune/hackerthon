@@ -1,0 +1,25 @@
+{
+  "bookList": [
+    {
+      "title": "123",
+      "author": "123",
+      "price": "",
+      "id": 1
+    },
+    {
+      "title": "21312312312",
+      "author": "123",
+      "price": "",
+      "id": 5
+    }
+  ],
+  "storeList": [
+    {
+      "name": "21312312312",
+      "location": "123",
+      "star": "",
+      "etc": "",
+      "id": 1
+    }
+  ]
+}
