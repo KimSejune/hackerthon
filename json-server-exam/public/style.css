@@ -148,6 +148,7 @@ input{
 #submitBtn{
   width : 49%;
   display: inline-block;
+  cursor: pointer;
 }
 .addCancel{
   margin-right:5px;
@@ -283,6 +284,7 @@ p.label{
   display: flex;
   justify-content: space-between;
 }
+
 
 .getPeople1,
 .getPeople2,

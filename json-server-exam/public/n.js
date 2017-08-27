@@ -12,15 +12,17 @@
   var inputpeople = document.querySelectorAll('.people1');
   var plusPeople = document.getElementById('plusPeople');
   var addpepleform = document.getElementById('addpepleform');
-  inputpeople = Array.from(inputpeople);
-  // var inputpeople1 = document.getElementById('people1');
-  // var inputpeople2 = document.getElementById('people2');
-  // var inputpeople3 = document.getElementById('people3');
+  // inputpeople = Array.from(inputpeople);
+  inputpeople = Array.prototype.slice.call(inputpeople);
+
   var inputday = document.getElementById('day');
 
-
+  
+  // DB에 저장된 데이터를 가져온다.
   function getListItem(e) {
     var xhr = new XMLHttpRequest();
+
+    // 비동기 방식으로 데이터를 보낸다.
     xhr.open('get', '/NListItem', true);
     xhr.send(null);
 
@@ -28,9 +30,11 @@
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
           console.log('status OK!');
+          // DB로 부터 가져온 데이터를 객체형식으로 저장한다.
           nlistitem = JSON.parse(xhr.responseText);
           nlistitem.forEach(el => {
-            insertListItem(el);
+            // 각각의 요소들을 insertListTable로 넘겨준다.
+            insertListTable(el);
           });
         } else {
           console.log("status Error : " + this.status);
@@ -39,11 +43,7 @@
     }
   }
 
-
-  function insertListItem(el) {
-    insertListTable(el);
-  }
-
+  // 입력받은 객체값을 main에 그려준다.
   function insertListTable({
     id,
     total,
@@ -52,10 +52,9 @@
     people,
     day
   }) {
-    // if (people.length + 1 !== count * 1) {
-    //   return alert('인원수가 다릅니다.');
-    // }else{}
+    // 1인당 갚아야할 돈을 변수로 지정.
     var putMoney = total / count;
+    // 나의 것을 제외하고 낸돈을 지정.
     var myMoney = total - putMoney;
 
     console.log(people);
@@ -97,24 +96,35 @@
     insertList.insertAdjacentHTML('beforeend', str);
     var deleteBtn = document.querySelectorAll('.deleteBtn');
     checkArrayAction();
+    // deleteBtn을 마지막 생성된 요소에 이벤트를 건다.
     deleteBtn[deleteBtn.length - 1].addEventListener('click', deleteBtnAction);
 
   }
 
+  // check된 요소들을 찾기위한 함수.
   function checkArrayAction() {
+
+    // checkbox요소를 가진 것들을 선택.
     var checkArray = document.querySelectorAll('.cardBodyRight > .getPeople > div > input[type=checkbox]');
     [...checkArray].map(el => {
       console.log(el);
+
+      // 요소의 값이 변경될 때를 체크한다.
       el.onchange = function () {
+        // 요소의 부모를 찾는 변수 insertCard 선언
         let insertCard = findParent(this);
         console.log(insertCard);
         let rightTotalMoney = insertCard.querySelector('.rightTotalMoney');
         let rightGetMoney = insertCard.querySelector('.rightGetMoney');
         let rightLeftMoney = insertCard.querySelector('.rightLeftMoney');
 
+        // String을 int로 변경
         let total = +rightGetMoney.textContent;
+        // input요소의 next, next로서 p 태그의 textContent를 찾는다.
         let money = +el.nextElementSibling.nextElementSibling.textContent;
+        // 요소의 체크시 밑줄을 가게하기 위하여 부모노드를 찾는다.
         let byName = el.parentNode;
+
         if (el.checked === true) {
           total += money;
           byName.style.textDecoration = 'line-through';
@@ -126,14 +136,11 @@
         rightLeftMoney.textContent = (rightTotalMoney.textContent * 1 - rightGetMoney.textContent * 1);
         console.log(rightLeftMoney.textContent);
 
-
-
-
-        // document.querySelector('') = ;
       };
     });
   }
 
+  // 부모요소의 id값을 찾을때까지 while을 돈다.
   function findParent(el) {
     while (!el.parentNode.id) {
       el = el.parentNode;
@@ -151,8 +158,10 @@
 
   function submitBtnAction(e) {
 
-    console.log('hi');
-    if (!inputtotal.value.trim() && !inputcalpeople.value.trim() && !inputcount.value.trim()) {
+    console.log('inputpeople.length :'+ (inputpeople.length)*1 + 'inputcount.count : '+inputcount.value);
+    if ((inputpeople.length)*1 !== inputcount.textContent * 1) {
+      return alert('인원수가 다릅니다.');
+    }else if (!inputtotal.value.trim() && !inputcalpeople.value.trim() && !inputcount.value.trim()) {
       return alert('총금액, 계산한 사람명, 인원은 필수 입력입니다.');
     } else {
 
@@ -162,7 +171,7 @@
       inputtotal.value = '';
       inputcalpeople.value = "";
       inputcount.value = "";
-      for (var i = 0; i < inputpeople.length - 1; i++) {
+      for (var i = 0; i < inputpeople.length; i++) {
         inputpeople[i].value = "";
       }
       inputday.value = "";
@@ -191,7 +200,7 @@
           console.log('Post status OK!');
           var addItem = JSON.parse(xhr.responseText);
 
-          insertListItem(addItem);
+          insertListTable(addItem);
 
         } else {
           console.log('Post status Error!!');
@@ -236,6 +245,7 @@
 
   function addPeopleInputBox(e) {
     addpepleform.insertAdjacentHTML('beforeend', `<input class="people1 form" type="text" name="" placeholder="이름을 입력하세요">`);
+    console.log('addPeople inputpeople.length : '+inputpeople.length);
   }
 
 
